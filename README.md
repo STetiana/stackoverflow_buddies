@@ -1,4 +1,4 @@
-# stackoverflow_buddies
+# Stack Overflow Buddies
 
 This project analyzes the 2025 Stack Overflow Developer Survey to explore trends in technology usage, developer experience, and AI adoption. The primary goal is to build a predictive model that estimates developer salaries based on survey responses.
 
