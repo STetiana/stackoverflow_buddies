@@ -1,14 +1,31 @@
-# Stack Overflow Buddies
+# stackoverflow_buddies
 
-Welcome to Stack Overflow Buddies!
+This project analyzes the 2025 Stack Overflow Developer Survey to explore trends in technology usage, developer experience, and AI adoption. The primary goal is to build a predictive model that estimates developer salaries based on survey responses.
 
-This is the repo detailing our exploration of the Stack Overflow Annual Developer Survey 2025 as part of our class project between March and June 2026.
+The dataset provides rich insights into the global developer ecosystem, including programming languages, tools, work environments, and demographics. By leveraging this data, we aim to uncover the key factors that influence developer compensation.
 
-The full original source dataset from Stack Overflow can be downloaded at: https://survey.stackoverflow.co.
+### Objectives
 
-The results as illustrated by Stack Overflow itself can be found at https://survey.stackoverflow.co/2025.
+- Perform exploratory data analysis (EDA) on the survey dataset
+- Identify important features affecting developer salaries
+- Analyze trends in:
+    - Programming languages and frameworks
+    - Developer experience levels
+    - AI tool usage
+    - Employment types and work setups
+- Build and evaluate machine learning models to predict salaries
+- Interpret model results to understand salary drivers
 
-Our goal is to humbly build on and add to these findings, offering job seekers especially career changers specific and deep insights in the form of a data app on how they can flare better in the German-speaking (DACH) job market across Austria (A), Germany (D) and Switzerland (CH).
 
-A diary on our endeavor can be found at https://github.com/STetiana/stackoverflow_buddies/wiki.  We hope you will enjoy a glimpse of our humanly journey besides seeing the results.
+### Dataset
+
+The dataset comes from the 2025 Stack Overflow Developer Survey, which includes responses from developers worldwide.
+
+**Key Features:** 
+- Demographics (country, education, etc.)
+- Professional experience
+- Technologies used (languages, frameworks, tools)
+- AI usage and adoption
+- Employment details
+- Annual salary (target variable)
 
