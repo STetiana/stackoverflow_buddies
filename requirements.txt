@@ -1,5 +1,4 @@
 # Python Version: 3.11.9
-streamlit==1.56.0
 numpy==2.3.5
 pandas==2.3.3
 scikit-learn==1.6.1

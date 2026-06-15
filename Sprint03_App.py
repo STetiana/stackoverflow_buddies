@@ -7,7 +7,7 @@ import joblib
 import math
 
 # columns as ordered in the prediction model
-COLUMNS_IN_MODEL = ['WorkExp','AIAgents','Country','EdLevel','DevType','OrgSize','ICorPM','RemoteWork','Industry','Employment']
+COLUMNS_IN_MODEL = ['WorkExp','AIAgents','Country','EdLevel','DevType','OrgSize','ICorPM','RemoteWork','Industry','Employment', 'os_MacOS']
 
 # columns and their values (as formulated in the Stack Overflow 2026 Developer Survey) ordered by on screen order
 COUNTRY_OPTIONS = [
@@ -112,7 +112,7 @@ def main():
 
     with middle_col:
 
-        Industry = st.selectbox("Industry", options=INDUSTRY_OPTIONS, index=0)
+        Industry = st.selectbox("Industry", options=INDUSTRY_OPTIONS, index=7)
         OrgSize = st.selectbox("Organization size", options=ORGSIZE_OPTIONS, index=0)
         RemoteWork = st.selectbox("Work location", options=REMOTEWORK_OPTIONS, index=0)
         ICorPM = st.selectbox("Job nature", options=ICORPM_OPTIONS, index=0)
@@ -122,24 +122,30 @@ def main():
         DevType = st.selectbox("Developer type", options=DEVTYPE_OPTIONS, index=0)
         AIAgents = st.selectbox("Using AI Agents?", options=AIAGENTS_OPTIONS, index=0)
 
+        # convert to 1 if true and 0 if false
+        os_MacOS_radio = st.selectbox("Developing on MacOS?", ("No", "Yes"))
+        os_MacOS = 1 if os_MacOS_radio == "Yes" else 0
+
+        # spacers for alignment
+        st.write("")
+        st.write("")
         submit = st.button("Submit")
 
         if submit:
         
             # construct pandas data frame with values specified
-            df = pd.DataFrame([[WorkExp, AIAgents, Country, EdLevel, DevType, OrgSize, ICorPM, RemoteWork, Industry, Employment]],
+            df = pd.DataFrame([[WorkExp, AIAgents, Country, EdLevel, DevType, OrgSize, ICorPM, RemoteWork, Industry, Employment, os_MacOS]],
                               columns=COLUMNS_IN_MODEL)
 
             # run inference pipeline
             prediction = pipeline.predict(df)
 
             # compensation normalized with log in model; revert value to actual value in USD before displaying it
-            preds_dollars = np.expm1(prediction)
+            prediction_in_dollars = np.expm1(prediction)
 
             # round up to the nearest whole number integer
-            st.success("Income potential:")
-            value = math.ceil(preds_dollars[0])
-            st.markdown(f"{value:,} USD")
+            prediction_in_dollars_rounded = math.ceil(prediction_in_dollars[0])
+            st.success(f"Income potential:  {prediction_in_dollars_rounded:,} USD")
 
 if __name__ == "__main__":
     main()
